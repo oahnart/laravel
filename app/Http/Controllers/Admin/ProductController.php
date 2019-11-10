@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     function getListProduct(){
-        echo 'hello';
+        return view('admin.product.list_product');
 //        $products=Product::orderBy('id','DESC')->get();
 //        //todo để đây lát nữa làm
 //        echo "<pre>";
