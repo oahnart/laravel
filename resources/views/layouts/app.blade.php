@@ -18,6 +18,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/frontend/fontawesome-free-5.11.2-web/css/all.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/frontend/bootstrap-3.3.7/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/frontend.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -73,6 +76,11 @@
         </nav>
 
         <main class="py-4">
+            <div class="container">
+                <div class="menu">
+                    make menu here
+                </div>
+            </div>
             @yield('content')
         </main>
     </div>

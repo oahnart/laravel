@@ -14,7 +14,19 @@ Products extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('products', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('product_name');
+            $table->string('product_image_intro')->nullable();
+            $table->integer('publish');
+            $table->integer('category_id');
+            $table->integer('ordering');
+            $table->float('price');
+            $table->float('sale_price')->nullable();
+            $table->text('description');
+            $table->text('full_description');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -24,6 +36,6 @@ Products extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('products');
     }
 }

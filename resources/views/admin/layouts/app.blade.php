@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/admin/css/admin.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -76,9 +77,23 @@
             <div class="row">
                 <div class="col-md-3">
                     <ul class="list-group">
-                        <li class="list-group-item"><a href="{{route('danh-sach-san-pham')}}">List product</a></li>
-                        <li class="list-group-item"><a href="{{route('list-danh-muc')}}">List category</a></li>
-                        <li class="list-group-item">list categories</li>
+                        <li class="list-group-item">
+                            <a href="{{route('danh-sach-san-pham')}}">List product</a>
+                            <ul>
+                                <li>
+                                    <a href="{{route('them-san-pham')}}">Add product</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{{route('list-danh-muc')}}">List Category</a>
+                            <ul>
+                                <li>
+                                    <a href="{{route('them-danh-muc')}}">Add Category</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="list-group-item">list oeeg</li>
                         <li class="list-group-item">Morbi leo risus</li>
                         <li class="list-group-item">Porta ac consectetur ac</li>
                         <li class="list-group-item">Vestibulum at eros</li>
