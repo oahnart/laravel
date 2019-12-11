@@ -37,7 +37,7 @@
                             <div class="col-md-4">
                                 <select name="gioi_tinh" class="form-control">
                                     <option value="">Chọn...</option>
-                                    <option value="name">Nam</option>
+                                    <option value="nam">Nam</option>
                                     <option value="nu">Nữ</option>
                                 </select>
                             </div>

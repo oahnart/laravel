@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use DB;
 
 class CategoryController extends Controller
 {
@@ -14,7 +15,9 @@ class CategoryController extends Controller
     }
 
     function getAddCategory(){
-        return view('admin.category.add_category');
+        $list_root_category=DB::table('categories')->where('parent','=',null)->get();
+        $list_sub_category=DB::table('categories')->where('parent','!=',null)->get();
+        return view('admin.category.add_category',compact('list_root_category','list_sub_category'));
     }
     function postAddCategory(Request $request){
         $post = $request->all();
@@ -26,6 +29,7 @@ class CategoryController extends Controller
         $category=new Category();
         $category->category_name=$post['category_name'];
         $category->ordering=$post['ordering'];
+        $category->parent=$post['parent'];
         $category->description=$post['description'];
 //        $category->publish=1;
         $category->created_at=date('Y-m-d H:i:s');
@@ -44,7 +48,8 @@ class CategoryController extends Controller
 
     function getEditCategory($id,Request $request){
         $category = Category::find($id);
-        return view('admin.category.edit_category',compact('category'));
+        $list_root_category=DB::table('categories')->where('parent','=',null)->get();
+        return view('admin.category.edit_category',compact('category','list_root_category'));
     }
     function postEditCategory($id,Request $request){
         $post = $request->all();
@@ -57,6 +62,7 @@ class CategoryController extends Controller
         $category->category_name=$post['category_name'];
         $category->ordering=$post['ordering'];
         $category->description=$post['description'];
+        $category->parent=$post['parent'];
 //        $category->publish=1;
         if($category->save()){
             if($request->hasFile('image_category')){

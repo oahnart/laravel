@@ -93,7 +93,9 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="list-group-item">list oeeg</li>
+                        <li class="list-group-item">
+                            <a href="{{route('list-don-hang')}}">List Orders</a>
+                        </li>
                         <li class="list-group-item">Morbi leo risus</li>
                         <li class="list-group-item">Porta ac consectetur ac</li>
                         <li class="list-group-item">Vestibulum at eros</li>

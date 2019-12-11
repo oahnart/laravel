@@ -20,9 +20,20 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get("product-detail/{id}",['as'=>'product-detail','uses'=>"ProductController@getDetailProduct"]);
 Route::post("add-to-cart/{id}",['as'=>'add-to-cart','uses'=>"CartController@postAddTocart"]);
+Route::post("remove-item-cart/{id}",['as'=>'remove-item-cart','uses'=>"CartController@removeItemCart"]);
 Route::get("gio-hang/",['as'=>'gio-hang','uses'=>"CartController@index"]);
+
+Route::get("danh-muc/{id}",['as'=>'danh-muc','uses'=>"ProductController@getProductsById"]);
+
 Route::get("thanh-toan/",['as'=>'thanh-toan','uses'=>"CartController@payNow"]);
 Route::post("thanh-toan/",['as'=>'thanh-toan','uses'=>"CartController@postPayNow"]);
+
+//TODO sua dang
+Route::post("dang-nhap",['as'=>'dang-nhap','uses'=>"CartController@removeItemCart"]);
+//TODO tim-kiem
+Route::post("tim-kiem",['as'=>'tim-kiem','uses'=>"CartController@removeItemCart"]);
+Route::post("gioi-thieu",['as'=>'gioi-thieu','uses'=>"CartController@removeItemCart"]);
+Route::post("lien-he",['as'=>'lien-he','uses'=>"CartController@removeItemCart"]);
 
 
 
@@ -49,6 +60,13 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'auth'],funct
 
         //root/admin/san-pham/xoa-san-pham
         Route::get('xoa-san-pham/{id}',['as'=>'xoa-san-pham' , 'uses'=>'ProductController@getDeleteProduct']);
+
+        //root/admin/san-pham/list-image/{id}
+        Route::get("list-image/{id}", ['as' => 'list-image', 'uses' => 'ProductController@getEditListImageProduct']);
+        //root/admin/san-pham/add-image-product/{product_id}
+        Route::get("add-image-product/{product_id}", ['as' => 'add-image-product', 'uses' => 'ProductController@getAddImageProduct']);
+        //root/admin/san-pham/add-image-product/{product_id}
+        Route::post("post-add-image-product/{product_id}", ['as' => 'post-add-image-product', 'uses' => 'ProductController@postAddImageProduct']);
     });
 
 
@@ -69,5 +87,18 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'auth'],funct
         Route::get("xoa-danh-muc/{id}", ['as' => 'xoa-danh-muc', 'uses' => 'CategoryController@getDeleteCategory']);
         //root/admin/danh-muc/post-sua-danh-muc
         Route::post('post-sua-danh-muc/{id}',['as'=>"post-sua-danh-muc",'uses'=>'CategoryController@postEditCategory']);
+    });
+
+
+    //root/admin/don-hang
+    Route::group(['prefix' => 'don-hang'], function () {
+        //root/admin/don-hang/list-don-hang
+        Route::get("list-don-hang",['as'=>'list-don-hang','uses'=>"OrderController@getAllOrder"]);
+
+        //root/admin/don-hang/list-don-hang
+        Route::get("chi-tiet-don-hang/{id}",['as'=>'chi-tiet-don-hang','uses'=>"OrderController@getOrderDetail"]);
+
+        //root/admin/don-hang/list-don-hang
+        Route::post("update-order/{id}", ['as' => 'post-edit-order', 'uses' => 'OrderController@updateOrder']);
     });
 });

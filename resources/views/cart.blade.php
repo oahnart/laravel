@@ -9,6 +9,7 @@
                     <th>Đơn giá</th>
                     <th>Số lượng</th>
                     <th>Tổng</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -18,12 +19,18 @@
                         <td>{{$item->price}}</td>
                         <td>{{$item->qty}}</td>
                         <td>{{$item->price*$item->qty}}</td>
+                        <td>
+                            <form action="{{route('remove-item-cart',$item->rowId)}}" method="post">
+                                <button class="btn btn-primary">Delete</button>
+                                {{csrf_field()}}
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>
                 <tfoot>
-                    <td colspan="3">Tổng</td>
-                    <td>{{Cart::total()}}</td>
+                    <td colspan="4">Tổng</td>
+                    <td>{{Cart::subtotal()}}</td>
                 </tfoot>
             </table>
             <div class="row">
