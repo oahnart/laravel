@@ -28,12 +28,11 @@ Route::get("danh-muc/{id}",['as'=>'danh-muc','uses'=>"ProductController@getProdu
 Route::get("thanh-toan/",['as'=>'thanh-toan','uses'=>"CartController@payNow"]);
 Route::post("thanh-toan/",['as'=>'thanh-toan','uses'=>"CartController@postPayNow"]);
 
-//TODO sua dang
-Route::post("dang-nhap",['as'=>'dang-nhap','uses'=>"CartController@removeItemCart"]);
-//TODO tim-kiem
-Route::post("tim-kiem",['as'=>'tim-kiem','uses'=>"CartController@removeItemCart"]);
-Route::post("gioi-thieu",['as'=>'gioi-thieu','uses'=>"CartController@removeItemCart"]);
-Route::post("lien-he",['as'=>'lien-he','uses'=>"CartController@removeItemCart"]);
+
+Route::get("tim-kiem",['as'=>'tim-kiem','uses'=>"HomeController@timkiem"]);
+Route::get("laptop",['as'=>'laptop','uses'=>"HomeController@laptop"]);
+Route::get("linh-kien",['as'=>'linh-kien','uses'=>"HomeController@linhkien"]);
+Route::get("bao-hanh",['as'=>'bao-hanh','uses'=>"HomeController@baobanh"]);
 
 
 

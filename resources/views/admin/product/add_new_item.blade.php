@@ -24,9 +24,11 @@
             <tr>
                 <th>Category</th>
                 <th>
-                    <select name="category_id" id="">
-                        <option value="1">Điện thoại</option>
-                        <option value="2">Điện tử</option>
+                    <select name="category_id">
+                        <option value="">Root</option>
+                        @foreach($list_sub_category as $category)
+                            <option value="{{$category->id}}">{{$category->category_name}}</option>
+                        @endforeach
                     </select>
                 </th>
             </tr>

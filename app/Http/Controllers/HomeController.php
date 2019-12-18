@@ -24,8 +24,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $discount_products=DB::table('products')->orderBy('created_at')->get();
-        $new_products=DB::table('products')->orderBy('sale_price')->get();
-        return view('home',compact('discount_products','new_products'));
+        $hoc_tap=DB::table('products')->Where('category_id','=',18)->get();
+        $do_hoa=DB::table('products')->Where('category_id','=',20)->get();
+        $gaming=DB::table('products')->Where('category_id','=',23)->get();
+        $cao_cap=DB::table('products')->Where('category_id','=',24)->get();
+        return view('home',compact('hoc_tap','do_hoa','gaming','cao_cap'));
+    }
+    public  function laptop(){
+        $new_products=DB::table('products')->orderBy('created_at')->get();
+        return view('laptop',compact('new_products'));
+    }
+    public function linhkien(){
+        $linh_kien=DB::table('products')->Where('category_id','=',26)->get();
+        return view('linhkien',compact('linh_kien'));
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Product;
 use App\Category;
 use App\Galleries;
+use DB;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -16,7 +17,8 @@ class ProductController extends Controller
         return view('admin.product.list_product',compact('products'));
     }
     function getAddProduct(){
-        return view('admin.product.add_new_item');
+        $list_sub_category=DB::table('categories')->where('parent','!=',null)->get();
+        return view('admin.product.add_new_item',compact('list_sub_category'));
     }
     function postAddProduct(Request $request){
         $post = $request->all();

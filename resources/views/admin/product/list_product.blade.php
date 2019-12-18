@@ -14,7 +14,6 @@
                     <th>price</th>
                     <th>sale_price</th>
                     <th>created_at</th>
-                    <th>description</th>
                     <th></th>
                 </tr>
             </thead>
@@ -30,10 +29,9 @@
                         <td nowrap>{{$product->price}}</td>
                         <td nowrap>{{$product->sale_price}}</td>
                         <td nowrap>{{date('d-m-Y h:m', strtotime($product->created_at)) }}</td>
-                        <td nowrap>{{$product->description}}</td>
                         <th nowrap>
                             <a href="{{route('sua-san-pham',$product->id)}}" class="btn btn-primary">Edit</a>
-                            <button class="btn btn-primary">Delete</button>
+                            <a href="{{route('xoa-san-pham',$product->id)}}" class="btn btn-primary">Delete</a>
                             <a href="{{route('list-image',$product->id)}}" class="btn btn-primary">Gallery</a>
                         </th>
                     </tr>
