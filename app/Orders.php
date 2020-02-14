@@ -12,4 +12,10 @@ class Orders extends Model
         $list_product = DB::table('order_product')->select("*")->where('order_id','=', $id)->get();
         return $list_product;
     }
+
+    public static function getAllCustomerByOrderId($id){
+    	$list_customer = DB::table('customers')->select("*")->where('order_id','=', $id)->get();
+    	return $list_customer;
+    }
+
 }

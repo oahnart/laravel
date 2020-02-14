@@ -1,5 +1,11 @@
 @extends('admin.layouts.app')
 @section('content')
+    <div>
+        <ol class="breadcrumb">
+            <li><a style="text-decoration: none;color: #000;" href="{{route('home')}}">Home</a></li>&nbsp;/&nbsp;
+            <li><a style="text-decoration: none;color: #000;" href="{{route('laptop')}}">Edit Product</a></li>
+        </ol>
+    </div>
     <div class="view-edit-product">
         @if ($errors->any())
             <div class="alert alert-danger">

@@ -10,7 +10,13 @@
             </ul>
         </div>
     @endif
-{{--    enctype="multipart/form-data dùng để sử dungk input type=file--}}
+{{--    enctype="multipart/form-data dùng để sử dung input type=file--}}
+    <div>
+        <ol class="breadcrumb">
+            <li><a style="text-decoration: none;color: #000;" href="{{route('home')}}">Home</a></li>&nbsp;/&nbsp;
+            <li><a style="text-decoration: none;color: #000;" href="{{route('laptop')}}">Add Product</a></li>
+        </ol>
+    </div>
     <form action="{{route('post-add-product')}}" method="post" enctype="multipart/form-data">
         <table class="table table-bordered">
             <tr>

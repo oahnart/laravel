@@ -1,5 +1,13 @@
 @extends('admin.layouts.app')
 @section('content')
+<div style="margin-top: -47%;">
+    <div>
+        <ol class="breadcrumb">
+            <li><a style="text-decoration: none;color: #000;" href="{{route('home')}}">Home</a></li>&nbsp;/&nbsp;
+            <li><a style="text-decoration: none;color: #000;" href="{{route('laptop')}}">Edit Category</a></li>
+        </ol>
+    </div>
+    
     <div class="view-edit-category">
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -19,9 +27,7 @@
                 <tr>
                     <th>Parent</th>
                     <td>
-                        {{$category}}
                         <select name="parent" class="form-control">
-
                             <option value="" {{ $category->parent == "" ? " selected" : "" }}>Root</option>
                             @foreach($list_root_category as $item_category)
                                 <option {{ $category->parent == $item_category->id ? " selected " : "" }} value="{{$item_category->id}}">{{$item_category->category_name}}</option>
@@ -56,4 +62,5 @@
             {{csrf_field()}}
         </form>
     </div>
+</div>
 @endsection

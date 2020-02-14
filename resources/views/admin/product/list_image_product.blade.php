@@ -1,5 +1,11 @@
 @extends('admin.layouts.app')
 @section('content')
+    <div>
+        <ol class="breadcrumb">
+            <li><a style="text-decoration: none;color: #000;" href="{{route('home')}}">Home</a></li>&nbsp;/&nbsp;
+            <li><a style="text-decoration: none;color: #000;" href="{{route('laptop')}}">Gellary Product</a></li>
+        </ol>
+    </div>
     <div class="view-gallery">
         <h3>{{$product->product_name}}</h3>
         <table class="table table-bordered">

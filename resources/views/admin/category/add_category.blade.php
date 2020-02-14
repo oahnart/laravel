@@ -1,5 +1,8 @@
 @extends('admin.layouts.app')
+
 @section('content')
+<div style="margin-top: -47%;">
+    
     <div class="view-edit-category">
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -10,8 +13,14 @@
                 </ul>
             </div>
         @endif
+    <div>
+        <ol class="breadcrumb">
+            <li><a style="text-decoration: none;color: #000;" href="{{route('home')}}">Home</a></li>&nbsp;/&nbsp;
+            <li><a style="text-decoration: none;color: #000;" href="{{route('laptop')}}">Add Category</a></li>
+        </ol>
+    </div>
         <form action="{{route('post-them-category')}}" method="post"  enctype="multipart/form-data">
-            <table class="table  table-bordered">
+            <table class="table table-bordered">
                 <tr>
                     <th>Category name</th>
                     <td><input type="text" class="form-control" name="category_name"></td>
@@ -51,4 +60,5 @@
             {{csrf_field()}}
         </form>
     </div>
+</div>
 @endsection

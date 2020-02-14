@@ -21,6 +21,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get("product-detail/{id}",['as'=>'product-detail','uses'=>"ProductController@getDetailProduct"]);
 Route::post("add-to-cart/{id}",['as'=>'add-to-cart','uses'=>"CartController@postAddTocart"]);
 Route::post("remove-item-cart/{id}",['as'=>'remove-item-cart','uses'=>"CartController@removeItemCart"]);
+Route::post("update-to-cart/{id}",['as'=>'update-to-cart','uses'=>"CartController@postUpdateTocart"]);
+
 Route::get("gio-hang/",['as'=>'gio-hang','uses'=>"CartController@index"]);
 
 Route::get("danh-muc/{id}",['as'=>'danh-muc','uses'=>"ProductController@getProductsById"]);
@@ -32,9 +34,16 @@ Route::post("thanh-toan/",['as'=>'thanh-toan','uses'=>"CartController@postPayNow
 Route::get("tim-kiem",['as'=>'tim-kiem','uses'=>"HomeController@timkiem"]);
 Route::get("laptop",['as'=>'laptop','uses'=>"HomeController@laptop"]);
 Route::get("linh-kien",['as'=>'linh-kien','uses'=>"HomeController@linhkien"]);
-Route::get("bao-hanh",['as'=>'bao-hanh','uses'=>"HomeController@baobanh"]);
 
+Route::get("tin-tuc",['as'=>'tin-tuc','uses'=>"HomeController@tintuc"]);
+Route::get("bao-hanh",['as'=>'bao-hanh','uses'=>"HomeController@baohanh"]);
+Route::get("khuyen-mai",['as'=>'khuyen-mai','uses'=>"HomeController@khuyenmai"]);
+Route::get("dia-chi",['as'=>'dia-chi','uses'=>"HomeController@diachi"]);
+Route::get("tu-van",['as'=>'tu-van','uses'=>"HomeController@tuvan"]);
+Route::get("thong-tin",['as'=>'thong-tin','uses'=>"HomeController@thongtin"]);
+Route::get("thu-thuat",['as'=>'thu-thuat','uses'=>"HomeController@thuthuat"]);
 
+Route::get("sap_xep/{type}",['as'=>'sap_xep','uses'=>"HomeController@sapxep"]);
 
 Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'auth'],function (){
     //'middleware'=>'auth' bắt đăng nhập - nếu bỏ thì ko cần check login
@@ -99,5 +108,15 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'auth'],funct
 
         //root/admin/don-hang/list-don-hang
         Route::post("update-order/{id}", ['as' => 'post-edit-order', 'uses' => 'OrderController@updateOrder']);
+
+        //root/admin/don-hang/xoa-don-hang
+        Route::get("delete-order/{id}", ['as' => 'delete-order', 'uses' => 'OrderController@deleteOrder']);
+
+        //root/admin/don-hang/xoa-don-hang
+        Route::get("delete-orderProduct/{id}", ['as' => 'delete-orderProduct', 'uses' => 'OrderController@deleteOrderProduct']);
+
+        //root/admin/don-hang/list-don-hang
+        Route::post("update-orderProduct/{id}", ['as' => 'update-orderProduct', 'uses' => 'OrderController@updateOrderProduct']);
+
     });
 });

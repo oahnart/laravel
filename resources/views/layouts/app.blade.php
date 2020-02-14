@@ -21,8 +21,9 @@
     <link href="{{ asset('assets/frontend/fontawesome-free-5.11.2-web/css/all.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/frontend/bootstrap-3.3.7/dist/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/frontend.css') }}" rel="stylesheet">
+    
 </head>
-<body style="min-width: 1200px;background-color: #f5f5f5;">
+<body style="min-width:1200px;background-color: #f5f5f5;">
 <header style="background-color: #ff9300;">
     <div class="container">
         <div class="header-left">
@@ -33,8 +34,9 @@
             </div>
             <div class="col-md-3 col-md-offset-1" style="background-color: #fff; margin-left:14.5%;" >
                 <div class="area-search" style="margin-top: 20px; margin-bottom: 16px;" >
-                    <form action="{{route('tim-kiem')}}" method="post">
-                        <input type="text" class="form-control keyword" name="keyword" style="border-radius: 20px;" placeholder="Tìm Kiếm ..."><i class="fas fa-search"></i>
+                    <form action="{{route('tim-kiem')}}" method="get">
+                        <input type="text" class="form-control keyword" name="result" style="border-radius: 20px;" placeholder="Tìm Kiếm ..." required>
+                        <i class="fas fa-search"></i>
                     </form>
                 </div>
             </div>
@@ -54,28 +56,28 @@
                         </div>
                     </a>
                 </li>
-                <li>
-                    <a href="#">
-                        <div style="text-align: center;color: black">
-                            <i class="fas fa-tools" style=" font-size: 25px; color: #000;display: inline-block"></i><br>Bảo hành,Hậu mãi
-                        </div>
-                    </a>
-                </li>
-                <li><a href="#">
-                        <div style="text-align: center;color: black">
-                            <i class="fas fa-gifts" style=" font-size: 25px; color: #000;display: inline-block"></i><br>Khuyến mại
-                        </div>
-                    </a>
-                </li>
-                <li><a href="#">
+                <li><a href="{{route('tin-tuc')}}">
                         <div style="text-align: center;color: black">
                             <i class="fas fa-newspaper" style=" font-size: 25px; color: #000;display: inline-block"></i><br>Tin tức
                         </div>
                     </a>
                 </li>
-                <li><a href="#">
+                <li>
+                    <a href="{{route('bao-hanh')}}">
                         <div style="text-align: center;color: black">
-                            <i class="fas fa-map-marked-alt" style=" font-size: 25px; color: #000;display: inline-block"></i><br>Địa điểm
+                            <i class="fas fa-tools" style=" font-size: 25px; color: #000;display: inline-block"></i><br>Bảo hành
+                        </div>
+                    </a>
+                </li>
+                <li><a href="{{route('khuyen-mai')}}">
+                        <div style="text-align: center;color: black">
+                            <i class="fas fa-gifts" style=" font-size: 25px; color: #000;display: inline-block"></i><br>Khuyến mại
+                        </div>
+                    </a>
+                </li>
+                <li><a href="{{route('dia-chi')}}">
+                        <div style="text-align: center;color: black">
+                            <i class="fas fa-map-marked-alt" style=" font-size: 25px; color: #000;display: inline-block"></i><br>Địa chỉ GHDShop
                         </div>
                     </a>
                 </li>
@@ -192,10 +194,55 @@
             <h5><strong>Nghệ An</strong></h5>
             <small>273 Lê Duẩn, TP Vinh - Điện thoại: 0947.444.888</small>
         </div>
-
-
     </div>
 </footer>
+<br><br><br><br>
 
+<div style="position: absolute;right:250px;bottom: 40px; z-index: 1;">
+    <a style="position: fixed;border-radius: 50px;" href="https://www.facebook.com/messages/t/2539328929516023">
+        <div class="shop-Phone-1">
+            <div class="shop-Phone-2">
+                <i class="fas fa-phone icon-Phone"></i>
+            </div>
+            <div class="shop-Phone-3">
+                <span class="content-Phone">Tư vấn miễn phí</span><br>
+                <span class="content-Phone-2" >1900 6886 </span>
+            </div>
+        </div>
+    </a>
+</div>
+
+    <a class="cart-1" href="{{route('gio-hang')}}">
+        <div class="shop-cart-1">
+            <div class="shop-cart-2">
+                <i class="fas fa-cart-plus icon-cart"></i>
+            </div>
+            <div class="shop-cart-3">
+                <span class="content-cart">Giỏ hàng của bạn</span><br>
+                <span class="content-cart-2" >có {{Cart::count()}} Sản phẩm </span>
+            </div>
+        </div>
+    </a>
+
+
+<style type="text/css" media="screen">
+.Phone-1{position: absolute;}
+.shop-Phone-1{position: fixed;right:0px; z-index: 1;line-height: 15px; background-color: #424242;width:175px; border-top-left-radius: 50px;border-bottom-left-radius: 50px;}
+.shop-Phone-2{border-radius: 50px;width:43px;background-color:#d71616;text-align: center;line-height: 36px;float:left;}
+.shop-Phone-3{margin-top: 4px;}
+.icon-Phone{color: #fff;font-size: 17px;}
+.content-Phone{ text-align: center; color: #fff; font-size: 15px;margin:0px 10px 0px 10px;}
+.content-Phone-2{font-weight:bold;color:red; font-size: 15px;margin:0px 10px 0px 25px;}
+
+
+.cart-1{position: absolute;}
+.shop-cart-1{border-radius: 50px;position: fixed;right:0px;bottom: 70%; z-index: 1; border: 1px solid black;line-height: 15px; background-color: #fff;}
+.shop-cart-2{border-radius: 50px;width:43px;background-color:#d71616;text-align: center;line-height: 36px;float: right;margin-top: 1px;}
+.shop-cart-3{float: right;margin-top: 4px;}
+.shop-cart-1:hover{width:auto;line-height: 15px;}
+.icon-cart{color: #fff;font-size: 17px;}
+.content-cart{ text-align: center; color: black; font-size: 12px;margin:0px 10px 0px 10px;}
+.content-cart-2{color:red; font-size: 12px;margin:0px 10px 0px 15px;}
+</style>
 </body>
 </html>

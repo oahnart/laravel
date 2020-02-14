@@ -26,21 +26,23 @@ class CartController extends Controller
             'phone_number' => 'required',
             'address' => 'required'
         ]);
+
+        $orders = new Orders();
+        $orders->total =Cart::subtotal();
+        $orders->status = "pending";
+        $orders->save();
+        $order_id= $orders->id;
+
         $post = $request->all();
         $customers = new Customers();
+        $customers->email = $_POST['email'];
         $customers->first_name = $_POST['first_name'];
         $customers->last_name = $_POST['last_name'];
         $customers->gender = $_POST['gioi_tinh'];
         $customers->phone = $_POST['phone_number'];
         $customers->address = $_POST['address'];
+        $customers->order_id= $order_id;
         $customers->save();
-
-        $orders = new Orders();
-        $orders->customer_id = $customers->id;
-        $orders->total =Cart::subtotal();
-        $orders->status = "pending";
-        $orders->save();
-        $order_id= $orders->id;
 
         foreach (Cart::content() as $item){
             DB::table('order_product')->insert(
@@ -50,11 +52,12 @@ class CartController extends Controller
                     'product_name' => $item->name,
                     'product_price' => $item->price,
                     'product_qty' => $item->qty,
+                    'product_image_intro' => $item->options->product_image_intro,
+                    'description' => $item->options->description,
                 )
             );
         }
         Cart::destroy();
-        Session::flash('message', 'Bạn đã mua hàng thành công, cám ơn bạn');
         return redirect(route('home'));
     }
     //
@@ -65,12 +68,19 @@ class CartController extends Controller
         if ($product->sale_price){
             $price = $product->sale_price;
         }
-        Cart::add($id, $product->product_name,$post['quality'],$price);
+        $options['product_image_intro']= $product->product_image_intro;
+        $options['description']= $product->description;
+        Cart::add($id, $product->product_name,$post['quality'],$price,$options);
         return redirect(route('gio-hang'));
     }
 
     public function removeItemCart($id , Request $request){
         Cart::remove($id);
+        return redirect(route('gio-hang'));
+    }
+
+    public function postUpdateTocart($id, Request $request){
+        Cart::update($id,$request->qty);
         return redirect(route('gio-hang'));
     }
 }

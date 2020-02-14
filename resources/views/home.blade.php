@@ -15,7 +15,7 @@
     </style>
     <div class="container">
         <div class="col-md-8">
-            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel"  style="width: 750px; height: 310px; margin-left: 3.5px;">
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel"  style="width: 755px; height: 310px;">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <a href="#"><img class="d-block w-100" src="{{ asset('/assets/frontend/categories/1.jpg') }}" alt="1 slide" style="width: 750px; height: 310px;"></a>
@@ -60,8 +60,8 @@
             <img src="{{ asset('/assets/frontend/categories/banner-3.png') }}" alt="" style="width:1125px; ">
         </div>
 
-        <div class="col-md-8" style="margin-top: 0.5%;background-color: #f5f5f5;">
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width: 1120px; height: 75px; margin-left: 3.5px;">
+        <div class="col-md-8" style="margin-top: 0.5%;">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width: 1125px; height: 75px;background-color:#fff;">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -114,8 +114,8 @@
             @if (Session::has('message'))
                 <div class="alert alert-info">{{ Session::get('message') }}</div>
             @endif
-            <div class="discount-products">
-                <div>
+            <div class="discount-products" style="background-color: #f5f5f5; margin-left: 15px;">
+                <div style="background-color: #fff;">
                     <div style="float: right;">
                         <ul class="list-inline">
                             <li><h5><strong>Mức giá: </strong></h5></li>
@@ -127,28 +127,28 @@
                         </ul>
                     </div>
                     <div style="margin-bottom: 2%;">
-                        <div style="background-image: url('{{ asset('/assets/frontend/images/banner-logo-1.png') }}'); background-repeat: no-repeat; height:40px; width: 350px;"><h3 style="line-height: 1.5; margin-left: 5%;"><a href="#" class="title-1">HỌC TẬP VĂN PHÒNG</a></h3>
+                        <div style="background-image: url('{{ asset('/assets/frontend/images/banner-logo-1.png') }}'); background-repeat: no-repeat; height:40px; width: 350px;"><h3 style="line-height: 1.5; margin-left: 5%;"><a href="#" class="title-1">HỌC TẬP-VĂN PHÒNG</a></h3>
                         </div>
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row" style="margin-left:0.1px;">
                     <div>
-                        <img src="{{asset('assets/frontend/images/pro_poster_4939.jpg')}}" style="width: 280px; height: 280px;">
+                        <img src="{{ asset('/assets/frontend/categories/1.jpg') }}" style="width: 280px; height: 280px;">
                     </div>
                     @foreach($hoc_tap as $product)
                         <div class="col-md-3">
                             <div class="show-1">
-                                <div class="product-item" style="width: 260px; height: 420px;">
+                                <div class="product-item" style="width: 260px; height: 450px; background-color: #fff;">
                                     <div class="product-item-content">
                                         <div class="wrapper-image">
                                             <a href="{{route('product-detail',$product->id)}}" ><img class="product-image-intro-1" src="{{url('/')}}/{{$product->product_image_intro}}"></a>
                                         </div>
-                                        <div style="margin-top: 222px;text-align: center;">
+                                        <div style="margin-top: 232px;text-align: center;">
                                             <h4 style="font-weight: bold;" class="product-name"><a class="product-name-1" href="{{route('product-detail',$product->id)}}">{{$product->product_name}}</a></h4>
                                             <h5>{{$product->description}}</h5>
                                             <div class="prices-1">
-                                                <span>{{number_format($product->price)}}</span>
+                                                <span>{{number_format($product->price)}}<span>đ</span></span>
                                             </div>
                                         </div>
                                     </div>
@@ -182,41 +182,39 @@
                 </div>
             </div>
 
-            <div class="discount-products">
-                <div>
+            <div class="discount-products" style="background-color: #f5f5f5; margin-left: 15px;">
+                <div style="background-color: #fff;">
                     <div style="float: right;">
                         <ul class="list-inline">
                             <li><h5><strong>Mức giá: </strong></h5></li>
-                            <li><a class="price" style="text-decoration: none;" href="#">DƯỚI 5 TRIỆU</a></li>
-                            <li><a class="price" style="text-decoration: none;" href="#">5 TRIỆU -  7 TRIỆU</a></li>
                             <li><a class="price" style="text-decoration: none;" href="#">7 TRIỆU -  10 TRIỆU</a></li>
                             <li><a class="price" style="text-decoration: none;" href="#">10 TRIỆU - 15 TRIỆU</a></li>
                             <li><a class="price" style="text-decoration: none;" href="#">TRÊN 15 TRIỆU</a></li>
                         </ul>
                     </div>
                     <div style="margin-bottom: 2%;">
-                        <div style="background-image: url('{{ asset('/assets/frontend/images/banner-logo-1.png') }}'); background-repeat: no-repeat; height:40px; width: 350px;"><h3 style="line-height: 1.5; margin-left: 5%;"><a href="#" class="title-1">ĐỒ HỌA KỸ THUẬT</a></h3>
+                        <div style="background-image: url('{{ asset('/assets/frontend/images/banner-logo-1.png') }}'); background-repeat: no-repeat; height:40px; width: 350px;"><h3 style="line-height: 1.5; margin-left: 5%;"><a href="#" class="title-1">ĐỒ HỌA - KỸ THUẬT</a></h3>
                         </div>
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row" style="margin-left:0.1px;">
                     <div>
-                        <img src="{{asset('assets/frontend/images/pro_poster_3903.jpg')}}" style="width: 280px; height: 280px;">
+                        <img src="{{ asset('/assets/frontend/categories/1.jpg') }}" style="width: 280px; height: 280px;">
                     </div>
                     @foreach($do_hoa as $product)
                         <div class="col-md-3">
                             <div class="show-1">
-                                <div class="product-item" style="width: 260px; height: 420px;">
+                                <div class="product-item" style="width: 260px; height: 450px; background-color: #fff;">
                                     <div class="product-item-content">
                                         <div class="wrapper-image">
                                             <a href="{{route('product-detail',$product->id)}}" ><img class="product-image-intro-1" src="{{url('/')}}/{{$product->product_image_intro}}"></a>
                                         </div>
-                                        <div style="margin-top: 222px;text-align: center;">
+                                        <div style="margin-top: 232px;text-align: center;">
                                             <h4 style="font-weight: bold;" class="product-name"><a class="product-name-1" href="{{route('product-detail',$product->id)}}">{{$product->product_name}}</a></h4>
                                             <h5>{{$product->description}}</h5>
                                             <div class="prices-1">
-                                                <span>{{number_format($product->price)}}</span>
+                                                <span>{{number_format($product->price)}}<span>đ</span></span>
                                             </div>
                                         </div>
                                     </div>
@@ -250,39 +248,38 @@
                 </div>
             </div>
 
-            <div class="discount-products">
+            <div class="discount-products" style="background-color: #f5f5f5; margin-left: 15px;">
                 <div>
                     <div style="float: right;">
                         <ul class="list-inline">
                             <li><h5><strong>Mức giá: </strong></h5></li>
-                            <li><a class="price" style="text-decoration: none;" href="#">7 TRIỆU -  10 TRIỆU</a></li>
                             <li><a class="price" style="text-decoration: none;" href="#">10 TRIỆU - 15 TRIỆU</a></li>
                             <li><a class="price" style="text-decoration: none;" href="#">TRÊN 15 TRIỆU</a></li>
                         </ul>
                     </div>
                     <div style="margin-bottom: 2%;">
-                        <div style="background-image: url('{{ asset('/assets/frontend/images/banner-logo-1.png') }}'); background-repeat: no-repeat; height:40px; width: 350px;"><h3 style="line-height: 1.5; margin-left: 5%;"><a href="#" class="title-1">Laptop Gaming</a></h3>
+                        <div style="background-image: url('{{ asset('/assets/frontend/images/banner-logo-1.png') }}'); background-repeat: no-repeat; height:40px; width: 350px;"><h3 style="line-height: 1.5; margin-left: 5%;"><a href="#" class="title-1">LAPTOP GAMING</a></h3>
                         </div>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div>
-                        <img src="{{asset('assets/frontend/images/pro_poster_4786.jpg')}}" style="width: 280px; height: 280px;">
+                <div class="row" style="margin-left:0.1px;">
+                    <div style="background-color: #fff;">
+                        <img src="{{ asset('/assets/frontend/categories/1.jpg') }}" style="width: 280px; height: 280px;">
                     </div>
                     @foreach($gaming as $product)
                         <div class="col-md-3">
                             <div class="show-1">
-                                <div class="product-item" style="width: 260px; height: 420px;">
+                                <div class="product-item" style="width: 260px; height: 450px; background-color: #fff;">
                                     <div class="product-item-content">
                                         <div class="wrapper-image">
                                             <a href="{{route('product-detail',$product->id)}}" ><img class="product-image-intro-1" src="{{url('/')}}/{{$product->product_image_intro}}"></a>
                                         </div>
-                                        <div style="margin-top: 222px;text-align: center;">
+                                        <div style="margin-top: 232px;text-align: center;">
                                             <h4 style="font-weight: bold;" class="product-name"><a class="product-name-1" href="{{route('product-detail',$product->id)}}">{{$product->product_name}}</a></h4>
                                             <h5>{{$product->description}}</h5>
                                             <div class="prices-1">
-                                                <span>{{number_format($product->price)}}</span>
+                                                <span>{{number_format($product->price)}}<span>đ</span></span>
                                             </div>
                                         </div>
                                     </div>
@@ -316,7 +313,7 @@
                 </div>
             </div>
 
-            <div class="discount-products">
+            <div class="discount-products" style="background-color: #f5f5f5; margin-left: 15px;">
                 <div>
                     <div style="float: right;">
                         <ul class="list-inline">
@@ -331,23 +328,23 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div>
-                        <img src="{{asset('assets/frontend/images/pro_poster_3962.jpg')}}" style="width: 280px; height: 280px;">
+                <div class="row" style="margin-left:0.1px;">
+                    <div style="background-color: #fff;">
+                        <img src="{{ asset('/assets/frontend/categories/1.jpg') }}" style="width: 280px; height: 280px;">
                     </div>
                     @foreach($cao_cap as $product)
                         <div class="col-md-3">
                             <div class="show-1">
-                                <div class="product-item" style="width: 260px; height: 420px;">
+                                <div class="product-item" style="width: 260px; height: 450px; background-color: #fff;">
                                     <div class="product-item-content">
                                         <div class="wrapper-image">
                                             <a href="{{route('product-detail',$product->id)}}" ><img class="product-image-intro-1" src="{{url('/')}}/{{$product->product_image_intro}}"></a>
                                         </div>
-                                        <div style="margin-top: 222px;text-align: center;">
+                                        <div style="margin-top: 232px;text-align: center;">
                                             <h4 style="font-weight: bold;" class="product-name"><a class="product-name-1" href="{{route('product-detail',$product->id)}}">{{$product->product_name}}</a></h4>
                                             <h5>{{$product->description}}</h5>
                                             <div class="prices-1">
-                                                <span>{{number_format($product->price)}}</span>
+                                                <span>{{number_format($product->price)}}<span>đ</span></span>
                                             </div>
                                         </div>
                                     </div>
